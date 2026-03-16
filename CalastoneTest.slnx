@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="CalastoneTest.UnitTests/CalastoneTest.UnitTests.csproj" Id="d13cec98-49fe-49b7-a6b3-06625751f745" />
+  <Project Path="CalastoneTest/CalastoneTest.csproj" />
+</Solution>
