@@ -11,7 +11,6 @@ public class StreamLineReader(StreamReader reader)
             var segment = _currentLineReader.GetNextSegment();
             if (segment != null)
             {
-                Console.WriteLine(segment);
                 return segment;
             }
 
