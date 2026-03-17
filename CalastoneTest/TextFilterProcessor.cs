@@ -1,28 +1,18 @@
 ﻿using CalastoneTest.Filters;
-using CalastoneTest.Readers;
-using System.Text;
+using System.Text.RegularExpressions;
 
 namespace CalastoneTest;
 
 public class TextFilterProcessor(IFilter[] filters)
 {
-    public string Process(StreamReader reader)
+    public string Process(string text)
     {
-        var lineReader = new StreamLineReader(reader);
+        //Regex to match words, ignoring punctuation and whitespace
+        var words = Regex.Matches(text, @"\b[a-zA-Z]+\b")
+                         .Select(m => m.Value)
+                         .ToArray();
 
-        StringBuilder output = new();
-        var currentSegment = lineReader.GetNextSegment();
-        while (currentSegment != null)
-        {
-            var shouldExclude = currentSegment.Type == LineSegmentType.Word && filters.Any(filter => filter.IsMatch(currentSegment.Text));
-            if (!shouldExclude)
-            {
-                output.Append(currentSegment.Text);
-            }
-
-            currentSegment = lineReader.GetNextSegment();
-        }
-
-        return output.ToString();
+        var kept = words.Where(w => filters.All(f => !f.IsMatch(w))).ToList();
+        return string.Join(" ", kept);
     }
 }

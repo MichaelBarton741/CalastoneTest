@@ -8,9 +8,9 @@ var filters = new IFilter[]
     new ContainsTFilter(),
 };
 
-using StreamReader reader = new("Input.txt");
+var text = File.ReadAllText("Input.txt");
 
 var processor = new TextFilterProcessor(filters);
-var result = processor.Process(reader);
+var result = processor.Process(text);
 
 Console.WriteLine(result);
