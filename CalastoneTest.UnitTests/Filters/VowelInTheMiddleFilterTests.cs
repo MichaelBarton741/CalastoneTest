@@ -1,4 +1,5 @@
 ﻿using CalastoneTest.Filters;
+using FluentAssertions;
 
 namespace CalastoneTest.UnitTests.Filters;
 
@@ -26,11 +27,10 @@ public class VowelInTheMiddleFilterTests
     [InlineData("CBA", false)]
     public void ReturnsExpectedValue(string input, bool expected)
     {
-        // Arrange
         var filter = new VowelInTheMiddleFilter();
-        // Act
+        
         var result = filter.IsMatch(input);
-        // Assert
-        Assert.Equal(expected, result);
+
+        result.Should().Be(expected);
     }
 }

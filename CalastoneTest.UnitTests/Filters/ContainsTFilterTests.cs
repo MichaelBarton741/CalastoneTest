@@ -1,4 +1,5 @@
 ﻿using CalastoneTest.Filters;
+using FluentAssertions;
 
 namespace CalastoneTest.UnitTests.Filters;
 
@@ -14,11 +15,10 @@ public class ContainsTFilterTests
     [InlineData("a", false)]
     public void ReturnsExpectedValue(string input, bool expected)
     {
-        // Arrange
         var filter = new ContainsTFilter();
-        // Act
+        
         var result = filter.IsMatch(input);
-        // Assert
-        Assert.Equal(expected, result);
+        
+        result.Should().Be(expected);
     }
 }
