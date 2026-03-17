@@ -43,9 +43,9 @@ public class TextFilterProcessorTests
         {
             var filters = new IFilter[]
             {
-            new VowelInTheMiddleFilter(),
-            new WordLessThan3Filter(),
-            new ContainsTFilter(),
+                new VowelInTheMiddleFilter(),
+                new WordLessThan3Filter(),
+                new ContainsTFilter(),
             };
             var processor = new TextFilterProcessor(filters);
 
@@ -59,9 +59,9 @@ public class TextFilterProcessorTests
         {
             var filters = new IFilter[]
             {
-            new VowelInTheMiddleFilter(),
-            new WordLessThan3Filter(),
-            new ContainsTFilter(),
+                new VowelInTheMiddleFilter(),
+                new WordLessThan3Filter(),
+                new ContainsTFilter(),
             };
             var processor = new TextFilterProcessor(filters);
             var input = File.ReadAllText("Input.txt");
@@ -92,9 +92,9 @@ public class TextFilterProcessorTests
         {
             var filters = new IFilter[]
             {
-            new VowelInTheMiddleFilter(),
-            new WordLessThan3Filter(),
-            new ContainsTFilter(),
+                new VowelInTheMiddleFilter(),
+                new WordLessThan3Filter(),
+                new ContainsTFilter(),
             };
             var processor = new TextFilterProcessor(filters);
             var input = new StreamReader("Input.txt");
