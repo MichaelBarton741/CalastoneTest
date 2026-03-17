@@ -5,6 +5,25 @@ namespace CalastoneTest;
 
 public class TextFilterProcessor(IFilter[] filters)
 {
+    public async Task<string> Process(StreamReader reader)
+    {
+        var outputs = new List<string>();
+
+        string? currentLine = await reader.ReadLineAsync();
+        while (currentLine != null)
+        {
+            var processedLine = Process(currentLine);
+            if (!string.IsNullOrWhiteSpace(processedLine))
+            {
+                outputs.Add(processedLine);
+            }
+
+            currentLine = await reader.ReadLineAsync();
+        }
+
+        return string.Join(" ", outputs);
+    }
+
     public string Process(string text)
     {
         //Regex to match words, ignoring punctuation and whitespace
